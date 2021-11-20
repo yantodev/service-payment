@@ -1,14 +1,20 @@
 package com.yantodev.transaksi.module.order.controller;
 
 import com.yantodev.transaksi.common.payload.BaseResponse;
+import com.yantodev.transaksi.common.payload.BaseResponseOrder;
 import com.yantodev.transaksi.module.order.payload.OrderRequestDto;
 import com.yantodev.transaksi.service.order.OrderService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    private final String HEADER = "Authorization";
+    private final String PREFIX = "Bearer ";
+    private final String SECRET = "mySecretKey";
     @Autowired
     OrderService orderService;
 
@@ -17,7 +23,10 @@ public class OrderController {
         return orderService.inputOrder(orderRequestDto);
     }
     @GetMapping("")
-    public  BaseResponse getOrder(){
+    public BaseResponseOrder getOrder(@RequestHeader("Authorization") String header){
+        String jwtToken = header.replace(PREFIX, "");
+        Claims claims = Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();
+        String user = claims.get("sub").toString();
         return  orderService.getAll();
     }
 }

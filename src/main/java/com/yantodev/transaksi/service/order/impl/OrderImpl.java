@@ -1,6 +1,7 @@
 package com.yantodev.transaksi.service.order.impl;
 
 import com.yantodev.transaksi.common.payload.BaseResponse;
+import com.yantodev.transaksi.common.payload.BaseResponseOrder;
 import com.yantodev.transaksi.common.payload.CommonCode;
 import com.yantodev.transaksi.common.payload.CommonMessage;
 import com.yantodev.transaksi.model.Order;
@@ -55,13 +56,13 @@ public class OrderImpl implements OrderService {
     }
 
     @Override
-    public BaseResponse getAll() {
+    public BaseResponseOrder getAll() {
         try {
             List<Order> orders = orderRepository.findAll();
             Float totalOrder = orderRepository.selectTotal();
-            return new BaseResponse(CommonMessage.FOUND,CommonCode.SUCCESS,orders, totalOrder);
+            return new BaseResponseOrder(CommonMessage.FOUND,CommonCode.SUCCESS,orders, totalOrder);
             } catch(Exception e){
-                return  new BaseResponse(CommonMessage.NOT_FOUND, CommonCode.BAD_REQUEST);
+                return  new BaseResponseOrder(CommonMessage.NOT_FOUND, CommonCode.BAD_REQUEST);
             }
     }
 }
