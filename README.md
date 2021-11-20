@@ -7,16 +7,19 @@ Test PT Buana Varia Komputama
     <li>Add Product</li>
 </ol>
 
-###ADD USER
-POSTMAPPING<br/>
-Password with regex and bcrypt
+<h3>ADD USER</h3>
+<p>POSTMAPPING</p>
+<p>Password with regex and bcrypt<br/>
+This regex</p>
 
-This regex
 ![img.png](screenshot/Screenshot%20(10).png)
 
 
-###GET USER
-GETMAPPING
+<h3>GET USER</h3>
+<p>GETMAPPING</p>
 
-#by yantodev
+<h4>
+
 ![alt text](https://avatars.githubusercontent.com/u/49233072?s=40&v=4)
+by yantodev 
+</h4>
