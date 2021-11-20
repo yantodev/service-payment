@@ -29,6 +29,9 @@ add user
 login gagal
 ![img_2.png](screenshot/img_2.png)
 
+login gagal password tidak sama
+![img.png](screenshot/gagal.png)
+
 login success
 ![img.png](screenshot/img.png)
 
