@@ -61,7 +61,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"$2a$12$8oqoIxsf5JqYghg15Lnz8uyJlAEYaw9mIIe6X3uo/VSoimP.K6cIi\"\r\n}",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"P4sw0rd-admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
