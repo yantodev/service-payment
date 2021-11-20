@@ -17,8 +17,6 @@
     <li>Add Transation (Request Header)</li>
 </ol>
 
-<h3>ADD USER</h3>
-<p>POSTMAPPING</p>
 <p>Password with regex and bcrypt<br/>
 This regex</p>
 
@@ -58,10 +56,6 @@ get order
 ![img_13.png](screenshot/img_13.png)
 ![img_14.png](screenshot/img_14.png)
 
-
-
-<h3>GET USER</h3>
-<p>GETMAPPING</p>
 
 <h4>
 
