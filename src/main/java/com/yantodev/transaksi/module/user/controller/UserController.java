@@ -30,10 +30,5 @@ public class UserController {
     public BaseResponse userLogin(@RequestBody LoginRequest loginRequest){
         return userService.loginUser(loginRequest);
     }
-    @GetMapping("")
-    public BaseResponse getAll(){
-        return userService.getALl();
-    }
-
 
 }
