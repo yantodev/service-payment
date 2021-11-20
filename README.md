@@ -30,7 +30,7 @@ login gagal
 ![img_2.png](screenshot/img_2.png)
 
 login success
-![img_3.png](screenshot/img_3.png)
+![img.png](screenshot/img.png)
 
 add kategori
 ![img_4.png](screenshot/img_4.png)

@@ -45,7 +45,7 @@ public class UserImpl implements UserService {
 
             boolean emailTrue = Pattern.matches(emailRgx, userRequestDto.getEmail());
             boolean passwordTrue = Pattern.matches(passwordRgx, userRequestDto.getPassword());
-            String bcryptHashString = BCrypt.withDefaults().hashToString(12, new char[]{userRequestDto.getPassword().charAt(0)});
+            String bcryptHashString = BCrypt.withDefaults().hashToString(12, userRequestDto.getPassword().toCharArray());
             if(emailTrue && passwordTrue){
                 User user = new User();
                 user.setName(userRequestDto.getName());
@@ -67,14 +67,27 @@ public class UserImpl implements UserService {
     @Override
     public BaseResponse loginUser(LoginRequest loginRequest) {
         User user = userRepository.findByEmail(loginRequest.getEmail());
+        String password = loginRequest.getPassword();
+        String password2 = user.getPassword();
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(),password2);
+        System.out.println("cek password : " + password);
+        System.out.println("cek password2 : " + password2);
+        System.out.println("cek result : " + result.verified);
         if (user != null) {
-            String token = getJWTToken(user.getEmail());
-            AuthResponse authResponse = new AuthResponse();
-            authResponse.setEmail(user.getEmail());
-            authResponse.setName(user.getName());
-            authResponse.setToken(token);
-            System.out.println("tokennnnnn : " + authResponse.getToken());
-            return new BaseResponse(CommonMessage.LOGIN_SUCCESS, 200, authResponse);
+            if(result.verified){
+                String token = getJWTToken(user.getEmail());
+                AuthResponse authResponse = new AuthResponse();
+                authResponse.setName((user.getName()));
+                authResponse.setEmail(user.getEmail());
+                authResponse.setPassword(user.getPassword());
+                authResponse.setToken(token);
+                return new BaseResponse(CommonMessage.LOGIN_SUCCESS, 200, authResponse);
+            } else {
+                return new BaseResponse(CommonMessage.LOGIN_PASSWORD);
+            }
+
+//            System.out.println("tokennnnnn : " + authResponse.getToken());
+
         } else {
             return new BaseResponse(CommonMessage.LOGIN_ERROR);
         }

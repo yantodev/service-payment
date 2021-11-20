@@ -19,4 +19,5 @@ public class CommonMessage {
     public static final String REGISTER_ERROR       = "Register gagal! Periksa email dan password";
     public static final String LOGIN_SUCCESS        = "Login Berhasil!";
     public static final String LOGIN_ERROR          = "Login gagal! Periksa email dan password";
+    public static final String LOGIN_PASSWORD       = "Login gagal! Periksa password";
 }
