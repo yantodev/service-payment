@@ -1,14 +1,18 @@
 package com.yantodev.transaksi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import com.yantodev.transaksi.common.auditable.ModelBase;
 import com.sun.istack.NotNull;
+import com.yantodev.transaksi.util.auditable.AAuditable;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User extends ModelBase {
+public class User extends AAuditable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
+    private Long id;
 
     @NotNull
     @Column(name = "name")
@@ -22,7 +26,7 @@ public class User extends ModelBase {
     @Column(name = "password")
     private String password;
 
-    public User(){
+    public User() {
 
     }
 
